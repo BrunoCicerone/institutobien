@@ -1,0 +1,38 @@
+<!-- Mostrar la lista de usuarios -->
+<h2>Lista de usuarios:</h2>
+<table>
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Usuario</th>
+      <th>Contraseña</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.dni }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.apellidos }}</td>
+      <td>{{ usuario.usuario }}</td>
+      <td>{{ usuario.contraseña }}</td>
+      <td>
+        <button (click)="editarUsuario(usuario)">Editar</button>
+        <button (click)="eliminarUsuario(usuario.dni)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Formulario para agregar/editar un usuario -->
+<h2>Formulario de usuario:</h2>
+<form (ngSubmit)="guardarUsuario()">
+  <input type="text" name="dni" [(ngModel)]="usuario.dni" placeholder="DNI" required><br>
+  <input type="text" name="nombre" [(ngModel)]="usuario.nombre" placeholder="Nombre" required><br>
+  <input type="text" name="apellidos" [(ngModel)]="usuario.apellidos" placeholder="Apellidos" required><br>
+  <input type="text" name="usuario" [(ngModel)]="usuario.usuario" placeholder="Usuario" required><br>
+  <input type="password" name="contrasena" [(ngModel)]="usuario.contrasena" placeholder="Contraseña" required><br>
+  <button type="submit">Guardar</button>
+</form>
